@@ -21,12 +21,20 @@ form.addEventListener("submit", async (e) => {
     console.log("Data from backend:", data);
 
     let container = document.getElementById("container");
-    for (let key in data) {
-      let createElement = document.createElement("p");
-      const theCapilist = key.charAt(0).toUpperCase() + key.slice(1);
-      createElement.innerHTML = `${theCapilist} : ${data[key]}`;
-      container.appendChild(createElement);
-    }
+
+    data.forEach((obj, index) => {
+      for (let key in obj) {
+        let createElement = document.createElement("p");
+        const theCapilist = key.charAt(0).toUpperCase() + key.slice(1);
+        createElement.innerHTML = `${theCapilist} : ${obj[key]}`;
+        container.appendChild(createElement);
+      }
+      if (index < data.length - 1) {
+        let createElement = document.createElement("strong");
+        createElement.innerHTML = "Another Person Found At Database:";
+        container.appendChild(createElement);
+      }
+    });
   } else {
     console.error("Error:", response.status);
     let container = document.getElementById("container");

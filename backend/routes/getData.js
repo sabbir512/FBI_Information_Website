@@ -5,7 +5,10 @@ const router = express.Router();
 router.post("/", async (req, res) => {
   const { name } = req.body;
   try {
-    const findData = await PersonInformation.findOne({ name: name }); // Query the database dynamically based on the received name
+    const findData = await PersonInformation.find(
+      { name: name },
+      { _id: 0, __v: 0 }
+    ); // Query the database dynamically based on the received name
     res.json(findData);
   } catch (error) {
     console.error("Error:", error);
