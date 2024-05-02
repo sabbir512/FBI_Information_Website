@@ -9,6 +9,7 @@ const port = 8000;
 
 //middleware for transfer data to the frontend
 app.use(cors());
+//Body parser need for when im getting an http post request. It's help to get the body smoothly
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
@@ -16,8 +17,10 @@ app.use(bodyParser.json());
 async function main() {
   await mongoose.connect("mongodb://localhost:27017/Informaion");
 }
+
 main().catch((err) => console.log(err));
 
+//in express you write router as module and use it like this
 app.use("/add", addRouter);
 app.use("/find", getRouter);
 

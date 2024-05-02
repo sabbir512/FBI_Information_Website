@@ -22,6 +22,7 @@ form.addEventListener("submit", async (e) => {
 
     let container = document.getElementById("container");
 
+    //We are getting array of object here
     data.forEach((obj, index) => {
       for (let key in obj) {
         let createElement = document.createElement("p");
