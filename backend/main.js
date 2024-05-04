@@ -23,6 +23,8 @@ main().catch((err) => console.log(err));
 //in express you write router as module and use it like this
 app.use("/add", addRouter);
 app.use("/find", getRouter);
+app.use("/register", require("./routes/register"));
+
 
 //Server creating
 app.listen(port, () => {

@@ -2,7 +2,7 @@ const express = require("express");
 const { PersonInformation } = require("../schema/model");
 const router = express.Router();
 
-router.post("/", (req, res) => {
+router.post("/", async (req, res) => {
   const { name, desc, subscribe } = req.body;
   //Converting the first letter of string toUppercase so we can save in database like this
   const caplitalizeName = name.charAt(0).toUpperCase() + name.slice(1);
@@ -12,7 +12,7 @@ router.post("/", (req, res) => {
     isDone: subscribe,
   });
 
-  addNewPerson.save();
+  await addNewPerson.save();
   res.json("Your data has been saved");
 });
 

@@ -14,7 +14,6 @@ router.post("/", async (req, res) => {
     ); // Query the database dynamically based on the received name
     res.json(findData);
   } catch (error) {
-    console.error("Error:", error);
     res.status(500).json({ error: "Internal Server Error" });
   }
 });
